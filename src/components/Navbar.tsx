@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 function Navbar() {
   return (
     <>
-      <nav className="bg-gray-50 dark:bg-gray-700  ">
+      <nav className=" dark:bg-gray-700 mb-4 ">
         <div className="max-w-screen-xl px-4 py-3 mx-auto md:px-6 container">
           <div className="flex items-center">
             <ul className="flex justify-between flex-1 ">
