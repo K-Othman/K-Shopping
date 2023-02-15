@@ -25,9 +25,8 @@ function Store() {
   }
 
   return (
-    <section className="pt-12">
+    <section>
       <Categories categories={categories} />
-      <Link to={"/store"}>All</Link>
       <div
         className="container mx-auto pt-10 "
         style={{
