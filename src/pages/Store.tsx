@@ -37,36 +37,34 @@ function Store() {
       >
         {filteredProducts.map((product) => {
           return (
-            <Link
-              to={`/products/${product.id}`}
-              key={product.id}
-              className="border bg-white p-1 "
-            >
-              <img
-                className="h-[200px] m-auto "
-                src={product.image}
-                alt={product.description}
-                style={{ objectFit: "fill" }}
-              />
-              <div className="p-2  mx-auto ">
-                <p className="font-bold py-3 ">
-                  {product.title.slice(0, 30)}...
-                </p>
-                <p className="text-[#757F85] pb-2"> {product.category} </p>
-                <div>
-                  <p className="text-red-500">
-                    {product.rating.count < 10 ? "Low Stock" : null}
+            <div className="border bg-white p-1" key={product.id}>
+              <Link to={`/products/${product.id}`} className=" ">
+                <img
+                  className="h-[200px] m-auto "
+                  src={product.image}
+                  alt={product.description}
+                  style={{ objectFit: "fill" }}
+                />
+                <div className="p-2  mx-auto ">
+                  <p className="font-bold py-3 ">
+                    {product.title.slice(0, 30)}...
                   </p>
-                  <p> {product.rating.rate} </p>
+                  <p className="text-[#757F85] pb-2"> {product.category} </p>
+                  <div>
+                    <p className="text-red-500">
+                      {product.rating.count < 10 ? "Low Stock" : null}
+                    </p>
+                    <p> {product.rating.rate} </p>
+                  </div>
+                  <p className="pt-2 text-[#757F85]"> £{product.price} </p>
                 </div>
-                <p className="pt-2 text-[#757F85]"> £{product.price} </p>
-              </div>
+              </Link>
               <div>
                 <button className="border w-[100%] m-auto rounded py-2 bg-[#1A6CDD] text-white ">
                   + Add To Cart
                 </button>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>
