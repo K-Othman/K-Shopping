@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
-import { Product } from "./pages/Product";
+import Product from "./pages/Product";
 import SignUp from "./pages/SignUp";
 import Store from "./pages/Store";
 
