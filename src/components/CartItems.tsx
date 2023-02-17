@@ -3,7 +3,12 @@ import { ProductsContext } from "../context/productsContext";
 import { CartContext } from "../context/ShoppingCartContext";
 
 function CartItems() {
-  const { cartItems, addProductToCart } = useContext(CartContext);
+  const {
+    cartItems,
+    addProductToCart,
+    decreaseProductFromCart,
+    deleteFromCart,
+  } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
 
   return (
@@ -25,8 +30,11 @@ function CartItems() {
               </div>
             </div>
             <div>
-              <button>x</button>
+              <button onClick={() => deleteFromCart(product.id)}>x</button>
               <button onClick={() => addProductToCart(product.id)}>+</button>
+              <button onClick={() => decreaseProductFromCart(product.id)}>
+                _
+              </button>
 
               <p>Total: </p>
             </div>
