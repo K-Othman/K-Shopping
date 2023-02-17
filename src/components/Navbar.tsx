@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductsContext } from "../context/productsContext";
+
 import Home from "../pages/Home";
 
 function Navbar() {
@@ -52,7 +55,7 @@ function Navbar() {
                     Sign Up
                   </Link>
                 </li>
-                <button>
+                <Link to={"/carts"}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 576 512"
@@ -64,7 +67,7 @@ function Navbar() {
                   <div className=" absolute top-[78px] right-12 text-white bg-red-500 w-5 h-5 rounded-full flex justify-center items-center ">
                     3
                   </div>
-                </button>
+                </Link>
               </div>
             </ul>
           </div>

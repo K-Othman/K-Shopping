@@ -2,11 +2,13 @@ import { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ProductsContext, Product } from "../context/productsContext";
 import Categories from "../components/Categories";
+import { CartContext } from "../context/ShoppingCartContext";
 
 function Store() {
   const { categories, products, loading } = useContext(ProductsContext);
   const { category } = useParams();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
+  const { addProductToCart } = useContext(CartContext);
 
   useEffect(() => {
     if (products && category) {
@@ -23,7 +25,7 @@ function Store() {
   if (loading) {
     return <>Loading...</>;
   }
-
+  const quantity = 0;
   return (
     <section>
       <Categories categories={categories} />
@@ -60,7 +62,10 @@ function Store() {
                 </div>
               </Link>
               <div>
-                <button className="border w-[100%] m-auto rounded py-2 bg-[#1A6CDD] text-white ">
+                <button
+                  className="border w-[100%] m-auto rounded py-2 bg-[#1A6CDD] text-white "
+                  onClick={() => addProductToCart(product.id)}
+                >
                   + Add To Cart
                 </button>
               </div>
