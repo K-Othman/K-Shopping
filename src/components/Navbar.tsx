@@ -4,7 +4,9 @@ import { ProductsContext } from "../context/productsContext";
 import { CartContext } from "../context/ShoppingCartContext";
 
 function Navbar() {
-  const { cartQuantity } = useContext(CartContext);
+  const { cartQuantity, cartItems } = useContext(CartContext);
+  const theQuantityNumber = cartItems.find((i) => i.quantity);
+  console.log(cartQuantity, " <<<<");
 
   return (
     <>

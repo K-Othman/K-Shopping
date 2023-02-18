@@ -2,6 +2,11 @@ import { useContext } from "react";
 import { ProductsContext } from "../context/productsContext";
 import { CartContext } from "../context/ShoppingCartContext";
 
+// type CartItemProps = {
+//   id: number;
+//   quantity: number;
+// };
+
 function CartItems() {
   const {
     cartItems,
@@ -10,37 +15,42 @@ function CartItems() {
     deleteFromCart,
   } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
+  const idd = cartItems.find((i) => i.id);
+  const item = products.find((i) => i.id === idd?.id);
+  console.log(item, "HELLO");
+
+  // const item = StoreItems.find((i) => i.id === id);
 
   return (
     <div className="pt-10 container mx-auto ">
-      {products.map((product) => {
-        return (
-          <div key={product.id} className="flex justify-between ">
-            <div className="flex">
-              <div>
-                <img
-                  className="max-w-[100px]"
-                  src={product.image}
-                  alt={product.description}
-                />
-              </div>
-              <div>
-                <p>{product.title}</p>
-                <p>{product.price}</p>
-              </div>
-            </div>
-            <div>
-              <button onClick={() => deleteFromCart(product.id)}>x</button>
+      {/* {products.map((product) => { */}
+      {/* return ( */}
+      <div className="flex justify-between ">
+        <div className="flex">
+          <div>
+            <img
+              className="max-w-[100px]"
+              src={item?.image}
+              alt={item?.description}
+            />
+          </div>
+          <div>
+            <p>{item?.title}</p>
+            <p>{item?.price}</p>
+          </div>
+        </div>
+        {/* <div>
+              <button onClick={() => deleteFromCart(item.id)}>x</button>
               <button onClick={() => addProductToCart(product.id)}>+</button>
               <button onClick={() => decreaseProductFromCart(product.id)}>
                 _
               </button>
 
               <p>Total: </p>
-            </div>
-          </div>
-        );
-      })}
+            </div> */}
+      </div>
+      {/* );
+      })} */}
     </div>
   );
 }

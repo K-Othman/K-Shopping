@@ -27,6 +27,7 @@ interface IShoppingCart {
   decreaseProductFromCart: (id: number) => void;
   deleteFromCart: (id: number) => void;
   cartQuantity: number;
+  // cartQuauntity: number;
 }
 
 export const CartContext = createContext<IShoppingCart>({} as IShoppingCart);
@@ -42,6 +43,11 @@ export const ShoppingCartProvider: FC<Props> = ({ children }) => {
       cartItems.reduce((quantity, item) => quantity + item.quantity, 0)
     );
   }, [cartItems]);
+
+  // const cartQuauntity = cartItems.reduce(
+  //   (quantity, item) => item.quantity + quantity,
+  //   0
+  // );
 
   const addProductToCart = (productId: number) => {
     if (cartItems.length < 1) {

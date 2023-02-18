@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import CartItems from "./components/CartItems";
 import Navbar from "./components/Navbar";
+import { CartContext } from "./context/ShoppingCartContext";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
@@ -9,6 +11,13 @@ import SignUp from "./pages/SignUp";
 import Store from "./pages/Store";
 
 function App() {
+  // bring the context here and pass the cartItem id to the CartItems compmnent so you can use the id
+  // const { cartItems } = useContext(CartContext);
+  // console.log(cartItems, "CART");
+  // cartItems.map((item) => {
+  //   <CartItems key={item.id} {...item} />;
+  // });
+
   return (
     <>
       <Navbar />
