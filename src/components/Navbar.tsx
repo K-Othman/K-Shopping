@@ -5,8 +5,8 @@ import { CartContext } from "../context/ShoppingCartContext";
 
 function Navbar() {
   const { cartQuantity, cartItems } = useContext(CartContext);
-  const theQuantityNumber = cartItems.find((i) => i.quantity);
-  console.log(cartQuantity, " <<<<");
+  // const theQuantityNumber = cartItems.find((i) => i.quantity);
+  // console.log(cartQuantity, " <<<<");
 
   return (
     <>
@@ -58,7 +58,7 @@ function Navbar() {
                     Sign Up
                   </Link>
                 </li>
-                {cartQuantity > 0 && (
+                {cartItems.length > 0 && (
                   <Link to={"/carts"}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ function Navbar() {
                     </svg>
 
                     <div className=" absolute top-[78px] right-12 text-white bg-red-500 w-5 h-5 rounded-full flex justify-center items-center ">
-                      {cartQuantity}
+                      {cartItems.length}
                     </div>
                   </Link>
                 )}

@@ -25,7 +25,7 @@ function Store() {
   if (loading) {
     return <>Loading...</>;
   }
-  const quantity = 0;
+  // const quantity = 0;e
   return (
     <section>
       <Categories categories={categories} />

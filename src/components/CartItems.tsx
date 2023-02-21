@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductsContext } from "../context/productsContext";
 import { CartContext } from "../context/ShoppingCartContext";
 
@@ -15,11 +15,15 @@ function CartItems() {
     deleteFromCart,
   } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
-  const idd = cartItems.find((i) => i.id);
-  const item = products.find((i) => i.id === idd?.id);
-  console.log(item, "HELLO");
+  // const idd = cartItems.find((i) => i.id);
+  // const item = products.find((i) => i.id === cartItems.find((i) => i.id)?.id);
+  // const item = cartItems.find((i) => (i.id === products.find((i) => i.id))?.id);
+  console.log(cartItems, "ITEMMM");
 
-  // const item = StoreItems.find((i) => i.id === id);
+  // useEffect(() => {
+  //   const item = products.find((i) => i.id === cartItems.find((i) => i.id)?.id);
+  //   console.log(item, "iteeem");
+  // }, []);
 
   return (
     <div className="pt-10 container mx-auto ">

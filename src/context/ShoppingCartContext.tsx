@@ -44,27 +44,37 @@ export const ShoppingCartProvider: FC<Props> = ({ children }) => {
     );
   }, [cartItems]);
 
-  // const cartQuauntity = cartItems.reduce(
-  //   (quantity, item) => item.quantity + quantity,
-  //   0
-  // );
-
-  const addProductToCart = (productId: number) => {
-    if (cartItems.length < 1) {
-      setCartItems([{ id: productId, quantity: 1 }]);
-    } else {
-      cartItems.forEach((item: CartItem) => {
-        if (item.id === productId) {
-          setCartItems([
-            ...cartItems,
-            { id: productId, quantity: item.quantity + 1 },
-          ]);
-        } else {
-          setCartItems([...cartItems, { id: productId, quantity: 1 }]);
-        }
-      });
-    }
-  };
+  // const addProductToCart = (productId: number) => {
+  //   if (cartItems.length < 1) {
+  //     setCartItems([{ id: productId, quantity: 1 }]);
+  //   } else {
+  //     cartItems.forEach((item: CartItem) => {
+  //       if (item.id === productId) {
+  //         setCartItems([
+  //           ...cartItems,
+  //           { id: productId, quantity: item.quantity + 1 },
+  //         ]);
+  //       } else {
+  //         setCartItems([...cartItems, { id: productId, quantity: 1 }]);
+  //       }
+  //     });
+  //   }
+  // };
+  function addProductToCart(productId: number) {
+    setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === productId) == null) {
+        return [...cartItems, { id: productId, quantity: 1 }];
+      } else {
+        return currItems.map((item) => {
+          if (item.id === productId) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  }
 
   const decreaseProductFromCart = (productId: number) => {
     cartItems.forEach((item: CartItem) => {
