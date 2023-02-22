@@ -18,8 +18,11 @@ function CartItems() {
         if (itemm === null) return null;
 
         return (
-          <div key={item.id} className="flex justify-between my-8 ">
-            <div className="flex">
+          <div
+            key={item.id}
+            className="flex justify-between my-8 flex-col md:flex-row "
+          >
+            <div className="flex ">
               <img
                 className="max-w-[100px] mr-4 "
                 src={itemm?.image}
@@ -31,13 +34,7 @@ function CartItems() {
                 <p>£{itemm?.price}</p>
               </div>
             </div>
-            <div className="flex flex-col">
-              <button
-                className="text-red-500"
-                onClick={() => deleteFromCart(item.id)}
-              >
-                x
-              </button>
+            <div className="flex flex-col mx-auto ">
               <div className="flex">
                 <button
                   className="bg-[#0C6DFD] text-white rounded  pr-4 pb-2 pl-4 "
@@ -56,11 +53,17 @@ function CartItems() {
                   _
                 </button>
               </div>
+              <button
+                className="bg-[#BB2D3B] text-white rounded mx-auto mt-2 text-sm py-[2px] px-1 "
+                onClick={() => deleteFromCart(item.id)}
+              >
+                Remove
+              </button>
             </div>
           </div>
         );
       })}
-      <div>
+      <div className="flex justify-end text-[#757F85] ">
         Total: £
         {cartItems
           .reduce((total, i) => {
