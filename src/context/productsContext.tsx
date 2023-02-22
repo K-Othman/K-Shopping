@@ -4,12 +4,10 @@ import {
   useState,
   FC,
   useMemo,
-  Dispatch,
-  SetStateAction,
   useEffect,
 } from "react";
 
-type Product = {
+export type Product = {
   id: number;
   description: string;
   category: string;
@@ -19,11 +17,16 @@ type Product = {
   title: string;
 };
 
+export type Categories =
+  | "electronics"
+  | "jewelery"
+  | "men's clothing"
+  | "women's clothing";
+
 export interface IProductContext {
-  // is for the context - things you will pass down from the context
   products: Product[];
-  setProducts: Dispatch<SetStateAction<Product[]>>;
-  // setProducts: ({});
+  categories: Categories[];
+  loading: boolean;
 }
 
 type Props = {
@@ -35,14 +38,23 @@ export const ProductsContext = createContext<IProductContext>(
 );
 
 export const ProductContextProivder: FC<Props> = ({ children }) => {
-  const baseUrl = "https://fakestoreapi.com/products";
+  const baseUrl = "https://fakestoreapi.com";
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [categories] = useState<Categories[]>([
+    "electronics",
+    "jewelery",
+    "men's clothing",
+    "women's clothing",
+  ]);
 
   function getProducts() {
-    fetch(baseUrl)
+    setLoading(true);
+    fetch(`${baseUrl}/products`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
+        setLoading(false);
       });
   }
 
@@ -53,13 +65,13 @@ export const ProductContextProivder: FC<Props> = ({ children }) => {
   const ProductContextValue = useMemo(
     () => ({
       products,
-      setProducts,
+      categories,
+      loading,
     }),
-    [products, setProducts]
+    [products, categories, loading]
   );
 
   return (
-    // <ProductsContext.Provider value={{ products, setProducts }}>
     <ProductsContext.Provider value={ProductContextValue}>
       {children}
     </ProductsContext.Provider>
