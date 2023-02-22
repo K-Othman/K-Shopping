@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import {
   ProductsContext,
   Product as IProduct,
-} from "../context/productsContext";
+} from "../context/ProductsContext";
 
 const Product = () => {
   const { products, loading } = useContext(ProductsContext);

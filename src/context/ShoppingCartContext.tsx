@@ -44,22 +44,6 @@ export const ShoppingCartProvider: FC<Props> = ({ children }) => {
     );
   }, [cartItems]);
 
-  // const addProductToCart = (productId: number) => {
-  //   if (cartItems.length < 1) {
-  //     setCartItems([{ id: productId, quantity: 1 }]);
-  //   } else {
-  //     cartItems.forEach((item: CartItem) => {
-  //       if (item.id === productId) {
-  //         setCartItems([
-  //           ...cartItems,
-  //           { id: productId, quantity: item.quantity + 1 },
-  //         ]);
-  //       } else {
-  //         setCartItems([...cartItems, { id: productId, quantity: 1 }]);
-  //       }
-  //     });
-  //   }
-  // };
   const addProductToCart = (productId: number) => {
     const existingItem = cartItems.find((item) => item.id === productId);
     if (existingItem) {
@@ -75,20 +59,8 @@ export const ShoppingCartProvider: FC<Props> = ({ children }) => {
     }
   };
 
-  // const decreaseProductFromCart = (productId: number) => {
-  //   cartItems.forEach((item: CartItem) => {
-  //     if (item.quantity === 1) {
-  //       setCartItems([...cartItems.filter((i) => i.id !== productId)]);
-  //     } else {
-  //       setCartItems([
-  //         ...cartItems,
-  //         { id: productId, quantity: item.quantity - 1 },
-  //       ]);
-  //     }
-  //   });
-  // };
   const decreaseProductFromCart = (productId: number) => {
-    const updatedItems = cartItems.map((item: CartItem) => {
+    const updatedItems = cartItems.map((item) => {
       if (item.id === productId) {
         if (item.quantity > 1) {
           return { ...item, quantity: item.quantity - 1 };
@@ -104,8 +76,6 @@ export const ShoppingCartProvider: FC<Props> = ({ children }) => {
       return cartItems.filter((item) => item.id !== productId);
     });
   };
-
-  console.log(cartItems);
 
   const CartContextValue = useMemo(
     () => ({

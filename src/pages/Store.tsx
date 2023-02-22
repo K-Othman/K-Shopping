@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ProductsContext, Product } from "../context/productsContext";
+import { ProductsContext, Product } from "../context/ProductsContext";
 import Categories from "../components/Categories";
 import { CartContext } from "../context/ShoppingCartContext";
 
@@ -25,7 +25,6 @@ function Store() {
   if (loading) {
     return <>Loading...</>;
   }
-  // const quantity = 0;e
   return (
     <section>
       <Categories categories={categories} />

@@ -1,11 +1,6 @@
-import { useContext, useEffect } from "react";
-import { ProductsContext } from "../context/productsContext";
+import { useContext } from "react";
+import { ProductsContext } from "../context/ProductsContext";
 import { CartContext } from "../context/ShoppingCartContext";
-
-// type CartItemProps = {
-//   id: number;
-//   quantity: number;
-// };
 
 function CartItems() {
   const {
@@ -23,41 +18,59 @@ function CartItems() {
         if (itemm === null) return null;
 
         return (
-          <>
-            <div key={item.id} className="flex justify-between my-8 ">
-              <div className="flex">
-                <img
-                  className="max-w-[100px] mr-4 "
-                  src={itemm?.image}
-                  alt={itemm?.description}
-                />
+          <div key={item.id} className="flex justify-between my-8 ">
+            <div className="flex">
+              <img
+                className="max-w-[100px] mr-4 "
+                src={itemm?.image}
+                alt={itemm?.description}
+              />
 
-                <div>
-                  <p>{itemm?.title}</p>
-                  <p>£{itemm?.price}</p>
-                </div>
+              <div>
+                <p>{itemm?.title}</p>
+                <p>£{itemm?.price}</p>
               </div>
-              <div className="flex gap-4">
-                <button onClick={() => deleteFromCart(item.id)}>x</button>
-                <button onClick={() => addProductToCart(item.id)}>+</button>
-                <div>{item.quantity}</div>
-                <button onClick={() => decreaseProductFromCart(item.id)}>
+            </div>
+            <div className="flex flex-col">
+              <button
+                className="text-red-500"
+                onClick={() => deleteFromCart(item.id)}
+              >
+                x
+              </button>
+              <div className="flex">
+                <button
+                  className="bg-[#0C6DFD] text-white rounded  pr-4 pb-2 pl-4 "
+                  onClick={() => addProductToCart(item.id)}
+                >
+                  +
+                </button>
+                <div className="py-1  px-4 mx-2 bg-white rounded ">
+                  {item.quantity}
+                </div>
+
+                <button
+                  className="bg-[#0C6DFD] text-white rounded  pr-4 pb-4 pl-4 "
+                  onClick={() => decreaseProductFromCart(item.id)}
+                >
                   _
                 </button>
               </div>
             </div>
-            <div>Total: {}</div>
-          </>
+          </div>
         );
       })}
+      <div>
+        Total: £
+        {cartItems
+          .reduce((total, i) => {
+            const item = products.find((product) => product.id === i.id);
+            return total + (item?.price || 0) * i.quantity;
+          }, 0)
+          .toFixed(2)}
+      </div>
     </div>
   );
 }
 
 export default CartItems;
-
-// what I need to create the shopping cart
-
-//   Add item button
-// cart page => has the product in it
-// counter to count the products and total for the total price

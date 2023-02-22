@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { Categories as ICategories } from "../context/productsContext";
+import { Categories as ICategories } from "../context/ProductsContext";
 
 interface IProps {
   categories: ICategories[];

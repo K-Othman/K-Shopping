@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProductsContext } from "../context/productsContext";
+import { ProductsContext } from "../context/ProductsContext";
 import { CartContext } from "../context/ShoppingCartContext";
 
 function Navbar() {
   const { cartQuantity, cartItems } = useContext(CartContext);
-  // const theQuantityNumber = cartItems.find((i) => i.quantity);
-  // console.log(cartQuantity, " <<<<");
 
   return (
     <>
@@ -58,7 +56,7 @@ function Navbar() {
                     Sign Up
                   </Link>
                 </li>
-                {cartItems.length > 0 && (
+                {cartItems.length > 0 ? (
                   <Link to={"/carts"}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +71,7 @@ function Navbar() {
                       {cartItems.length}
                     </div>
                   </Link>
-                )}
+                ) : null}
               </div>
             </ul>
           </div>
