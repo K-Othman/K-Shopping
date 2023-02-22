@@ -27,7 +27,8 @@ function SignIn() {
     try {
       const res = await signInWithPopup(auth, provider);
       const user = res.user;
-      console.log(user);
+      localStorage.setItem("email", JSON.stringify(user));
+      console.log(user, "<");
     } catch (err) {
       console.error(err);
     }

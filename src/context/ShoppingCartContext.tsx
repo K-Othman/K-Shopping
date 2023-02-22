@@ -6,6 +6,7 @@ import {
   useState,
   useEffect,
 } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 // import CartItems from "../components/CartItems";
 
 type CartItem = {
@@ -33,7 +34,10 @@ interface IShoppingCart {
 export const CartContext = createContext<IShoppingCart>({} as IShoppingCart);
 
 export const ShoppingCartProvider: FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+    "shopping-cart",
+    []
+  );
   const [cartQuantity, setCartQuantity] = useState<number>(0);
   // const [isOpen, setIsOpen] = useState(false);
   // const openCart = () => setIsOpen(true);
