@@ -60,38 +60,48 @@ export const ShoppingCartProvider: FC<Props> = ({ children }) => {
   //     });
   //   }
   // };
-  function addProductToCart(productId: number) {
-    setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === productId) == null) {
-        return [...cartItems, { id: productId, quantity: 1 }];
-      } else {
-        return currItems.map((item) => {
-          if (item.id === productId) {
-            return { ...item, quantity: item.quantity + 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
-  }
-
-  const decreaseProductFromCart = (productId: number) => {
-    cartItems.forEach((item: CartItem) => {
-      if (item.quantity === 1) {
-        setCartItems([...cartItems.filter((i) => i.id !== productId)]);
-      } else {
-        setCartItems([
-          ...cartItems,
-          { id: productId, quantity: item.quantity - 1 },
-        ]);
-      }
-    });
+  const addProductToCart = (productId: number) => {
+    const existingItem = cartItems.find((item) => item.id === productId);
+    if (existingItem) {
+      const updatedItems = cartItems.map((item) => {
+        if (item.id === productId) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+      setCartItems(updatedItems);
+    } else {
+      setCartItems([...cartItems, { id: productId, quantity: 1 }]);
+    }
   };
 
-  const deleteFromCart = (id: number) => {
+  // const decreaseProductFromCart = (productId: number) => {
+  //   cartItems.forEach((item: CartItem) => {
+  //     if (item.quantity === 1) {
+  //       setCartItems([...cartItems.filter((i) => i.id !== productId)]);
+  //     } else {
+  //       setCartItems([
+  //         ...cartItems,
+  //         { id: productId, quantity: item.quantity - 1 },
+  //       ]);
+  //     }
+  //   });
+  // };
+  const decreaseProductFromCart = (productId: number) => {
+    const updatedItems = cartItems.map((item: CartItem) => {
+      if (item.id === productId) {
+        if (item.quantity > 1) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+      }
+      return item;
+    });
+    setCartItems(updatedItems);
+  };
+
+  const deleteFromCart = (productId: number) => {
     setCartItems((cartItems) => {
-      return cartItems.filter((item) => item.id !== id);
+      return cartItems.filter((item) => item.id !== productId);
     });
   };
 

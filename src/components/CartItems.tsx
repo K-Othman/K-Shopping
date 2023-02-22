@@ -15,46 +15,41 @@ function CartItems() {
     deleteFromCart,
   } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
-  // const idd = cartItems.find((i) => i.id);
-  // const item = products.find((i) => i.id === cartItems.find((i) => i.id)?.id);
-  // const item = cartItems.find((i) => (i.id === products.find((i) => i.id))?.id);
-  console.log(cartItems, "ITEMMM");
-
-  // useEffect(() => {
-  //   const item = products.find((i) => i.id === cartItems.find((i) => i.id)?.id);
-  //   console.log(item, "iteeem");
-  // }, []);
 
   return (
     <div className="pt-10 container mx-auto ">
-      {/* {products.map((product) => { */}
-      {/* return ( */}
-      <div className="flex justify-between ">
-        <div className="flex">
-          <div>
-            <img
-              className="max-w-[100px]"
-              src={item?.image}
-              alt={item?.description}
-            />
-          </div>
-          <div>
-            <p>{item?.title}</p>
-            <p>{item?.price}</p>
-          </div>
-        </div>
-        {/* <div>
-              <button onClick={() => deleteFromCart(item.id)}>x</button>
-              <button onClick={() => addProductToCart(product.id)}>+</button>
-              <button onClick={() => decreaseProductFromCart(product.id)}>
-                _
-              </button>
+      {cartItems.map((item) => {
+        const itemm = products.find((i) => i.id === item.id);
+        if (itemm === null) return null;
 
-              <p>Total: </p>
-            </div> */}
-      </div>
-      {/* );
-      })} */}
+        return (
+          <>
+            <div key={item.id} className="flex justify-between my-8 ">
+              <div className="flex">
+                <img
+                  className="max-w-[100px] mr-4 "
+                  src={itemm?.image}
+                  alt={itemm?.description}
+                />
+
+                <div>
+                  <p>{itemm?.title}</p>
+                  <p>£{itemm?.price}</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <button onClick={() => deleteFromCart(item.id)}>x</button>
+                <button onClick={() => addProductToCart(item.id)}>+</button>
+                <div>{item.quantity}</div>
+                <button onClick={() => decreaseProductFromCart(item.id)}>
+                  _
+                </button>
+              </div>
+            </div>
+            <div>Total: {}</div>
+          </>
+        );
+      })}
     </div>
   );
 }
