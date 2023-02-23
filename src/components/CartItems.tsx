@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsContext";
 import { CartContext } from "../context/ShoppingCartContext";
 
@@ -34,7 +35,7 @@ function CartItems() {
                 <p>£{itemm?.price}</p>
               </div>
             </div>
-            <div className="flex flex-col mx-auto ">
+            <div className="flex flex-col  ">
               <div className="flex">
                 <button
                   className="bg-[#0C6DFD] text-white rounded  pr-4 pb-2 pl-4 "
@@ -72,6 +73,9 @@ function CartItems() {
           }, 0)
           .toFixed(2)}
       </div>
+      <Link className="bg-[#0C6DFD] text-white" to={"/checkout"}>
+        Proceed to Checkout
+      </Link>
     </div>
   );
 }

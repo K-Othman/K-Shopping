@@ -1,14 +1,27 @@
 import {
   signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  getAuth,
+  // GoogleAuthProvider,
+  // signInWithPopup,
+  // getAuth,
   signOut,
 } from "firebase/auth";
 import { useState } from "react";
-import { auth, provider } from "../firebase";
+import { auth } from "../firebase";
+import GoogleButton from "react-google-button";
+import { UserAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 function SignIn() {
+  const { googleSignIn } = UserAuth();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,22 +36,22 @@ function SignIn() {
       });
   };
 
-  const signInWithGoogle = async () => {
-    try {
-      const res = await signInWithPopup(auth, provider);
-      const user = res.user;
-      localStorage.setItem("email", JSON.stringify(user));
-      console.log(user, "<");
-    } catch (err) {
-      console.error(err);
-    }
-    // signInWithPopup(auth, provider).then((result) => {
-    //   console.log(result);
-    //   // if (data.user.email) {
-    //   //   localStorage.setItem("email", data.user.email);
-    //   // }
-    // });
-  };
+  // const signInWithGoogle = async () => {
+  //   try {
+  //     const res = await signInWithPopup(auth, provider);
+  //     const user = res.user;
+  //     localStorage.setItem("email", JSON.stringify(user));
+  //     console.log(user, "<");
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // signInWithPopup(auth, provider).then((result) => {
+  //   console.log(result);
+  //   // if (data.user.email) {
+  //   //   localStorage.setItem("email", data.user.email);
+  //   // }
+  // });
+  // };
 
   return (
     <div className="sign-in-container">
@@ -59,13 +72,20 @@ function SignIn() {
         <button type="submit">Log In</button>
       </form>
       <div>
-        <button type="button" onClick={signInWithGoogle}>
+        <GoogleButton onClick={handleGoogleSignIn} />
+        {/* <button type="button" onClick={signInWithGoogle}>
           Sign in with Google
-        </button>
+        </button> */}
         <button type="button" onClick={() => signOut(auth)}>
           Sign out
         </button>
       </div>
+      <Link
+        to="/signup"
+        className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline"
+      >
+        Sign Up
+      </Link>
     </div>
   );
 }
