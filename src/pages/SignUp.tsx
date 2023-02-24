@@ -1,36 +1,38 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth, provider } from "../firebase";
+// import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 import CartItems from "../components/CartItems";
 
 function SignUp() {
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
-  const [value, setValue] = useState<string>("");
+  // const [value, setValue] = useState<string>("");
 
-  const signUp = () => {
-    // e.preventDefault();
-    signInWithPopup(auth, provider).then((data) => {
-      if (data.user.email) {
-        setValue(data.user.email);
-        localStorage.setItem("email", data.user.email);
-      }
-    });
-  };
+  // const signUp = () => {
+  //   e.preventDefault();
+  //   signInWithPopup(auth, provider).then((data) => {
+  //     if (data.user.email) {
+  //       setValue(data.user.email);
+  //       localStorage.setItem("email", data.user.email);
+  //     }
+  //   });
+  // };
 
   // useEffect(() => {
   //   setValue(localStorage.getItem("email"));
   // }, []);
 
   return (
-    <div className="sign-in-container">
-      {value ? (
-        <CartItems />
-      ) : (
-        <button onClick={signUp}>Sign With Google</button>
-      )}
-      {/* <form onSubmit={signUp}>
+    // <div className="sign-in-container">
+    <div>Hi</div>
+    //   {value ? (
+    //     <CartItems />
+    //   ) : (
+    //     <button onClick={signUp}>Sign With Google</button>
+    //   )}
+    // {
+    /* <form onSubmit={signUp}>
         <h1>Create Account</h1>
         <input
           type="email"
@@ -45,8 +47,9 @@ function SignUp() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Sign Up</button>
-      </form> */}
-    </div>
+      </form> */
+    // }
+    // </div>
   );
 }
 

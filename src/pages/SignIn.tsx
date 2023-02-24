@@ -5,14 +5,18 @@ import {
   // getAuth,
   signOut,
 } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../firebase";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
-  const { googleSignIn } = UserAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { googleSignIn, user, logOut } = UserAuth();
+  const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
     try {
@@ -21,20 +25,22 @@ function SignIn() {
       console.log(error);
     }
   };
+  useEffect(() => {
+    if (user != null) {
+      navigate("/store");
+    }
+  }, [user]);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const signIn = (e: any) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const signIn = (e: any) => {
+  //   e.preventDefault();
+  //   signInWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       console.log(userCredential);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   // const signInWithGoogle = async () => {
   //   try {
@@ -54,8 +60,8 @@ function SignIn() {
   // };
 
   return (
-    <div className="sign-in-container">
-      <form onSubmit={signIn}>
+    <div className=" absolute top-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] ">
+      {/* <form onSubmit={signIn}>
         <h1>Log In To Your Account </h1>
         <input
           type="email"
@@ -70,13 +76,14 @@ function SignIn() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Log In</button>
-      </form>
+      </form> */}
       <div>
         <GoogleButton onClick={handleGoogleSignIn} />
         {/* <button type="button" onClick={signInWithGoogle}>
           Sign in with Google
         </button> */}
-        <button type="button" onClick={() => signOut(auth)}>
+        <p>OR</p>
+        <button type="button" onClick={logOut}>
           Sign out
         </button>
       </div>

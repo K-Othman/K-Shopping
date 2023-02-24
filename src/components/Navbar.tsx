@@ -10,7 +10,7 @@ function Navbar() {
 
   const handleSignOut = async () => {
     try {
-      await logOut();
+      logOut();
     } catch (error) {
       console.log(error);
     }

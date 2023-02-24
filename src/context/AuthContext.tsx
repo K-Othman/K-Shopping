@@ -12,9 +12,10 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
+  signInWithRedirect,
+  User,
 } from "firebase/auth";
 import { auth } from "../firebase";
-import { User } from "firebase/auth";
 
 type Props = {
   children: ReactNode;
@@ -37,10 +38,12 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
+    // signInWithRedirect(auth, provider);
   };
 
   const logOut = () => {
     signOut(auth);
+    localStorage.clear();
   };
 
   useEffect(() => {
