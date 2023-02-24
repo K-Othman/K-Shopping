@@ -8,6 +8,7 @@ import Product from "./pages/Product";
 import SignUp from "./pages/SignUp";
 import Store from "./pages/Store";
 import Checkout from "./pages/Checkout";
+import Protected from "./components/Protected";
 // import {firebaseConfig} from "./firebase"
 // import { initializeApp } from "firebase/app";
 
@@ -27,7 +28,15 @@ function App() {
           <Route path="/login" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/carts" element={<CartItems />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/checkout"
+            element={
+              <Protected>
+                {" "}
+                <Checkout />
+              </Protected>
+            }
+          />
         </Routes>
       </main>
     </>
