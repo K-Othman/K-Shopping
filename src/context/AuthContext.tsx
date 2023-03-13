@@ -14,6 +14,9 @@ import {
   onAuthStateChanged,
   signInWithRedirect,
   User,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  Auth,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -28,6 +31,7 @@ interface IAuth {
   googleSignIn: () => void;
   logOut: () => void;
   user: User | null;
+  createUser: (email: string, password: string) => void;
 }
 
 const AuthContext = createContext<IAuth>({} as IAuth);
@@ -39,6 +43,10 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
     // signInWithRedirect(auth, provider);
+  };
+
+  const createUser = (email: string, password: string) => {
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const logOut = () => {
@@ -61,8 +69,9 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
       googleSignIn,
       logOut,
       user,
+      createUser,
     }),
-    [googleSignIn, logOut, user]
+    [googleSignIn, logOut, user, createUser]
   );
 
   return (

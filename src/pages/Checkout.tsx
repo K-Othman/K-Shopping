@@ -14,7 +14,10 @@ function Checkout() {
   return (
     <div>
       <p> Checkout</p>
-      <p>Welcome {user?.displayName} Your are about to checkout </p>
+
+      {user?.displayName
+        ? `Welcome ${user?.displayName} Your are about to checkout`
+        : `Hi, You are about to checkout`}
     </div>
   );
 }
