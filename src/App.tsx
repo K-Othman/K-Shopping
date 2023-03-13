@@ -32,7 +32,6 @@ function App() {
             path="/checkout"
             element={
               <Protected>
-                {" "}
                 <Checkout />
               </Protected>
             }

@@ -51,9 +51,13 @@ function Navbar() {
               </div>
               <div className="flex gap-3 ">
                 <li>
-                  {user?.displayName ? (
+                  {user?.displayName || user?.email ? (
                     <div className="flex gap-2 flex-col">
-                      <p>Hi, {user.displayName.split(" ")[0]} </p>
+                      <p>
+                        {user.displayName
+                          ? ` Hi ${user.displayName.split(" ")[0]} `
+                          : ""}{" "}
+                      </p>
                       <button
                         className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline"
                         onClick={handleSignOut}

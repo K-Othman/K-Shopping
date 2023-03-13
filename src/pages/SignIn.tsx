@@ -31,16 +31,16 @@ function SignIn() {
     }
   }, [user]);
 
-  // const signIn = (e: any) => {
-  //   e.preventDefault();
-  //   signInWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => {
-  //       console.log(userCredential);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  const signIn = (e: any) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   // const signInWithGoogle = async () => {
   //   try {
@@ -61,38 +61,49 @@ function SignIn() {
 
   return (
     <div className=" absolute top-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] ">
-      {/* <form onSubmit={signIn}>
-        <h1>Log In To Your Account </h1>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Log In</button>
-      </form> */}
       <div>
-        <GoogleButton onClick={handleGoogleSignIn} />
         {/* <button type="button" onClick={signInWithGoogle}>
           Sign in with Google
         </button> */}
+        {/* <p className="">OR sign in with your email</p> */}
+        <form onSubmit={signIn}>
+          <h1>Log In To Your Account </h1>
+          <div>
+            <label> Email: </label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <label> Password: </label>
+
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button type="submit">Log In</button>
+        </form>
         <p>OR</p>
+        <GoogleButton onClick={handleGoogleSignIn} />
         <button type="button" onClick={logOut}>
           Sign out
         </button>
       </div>
-      <Link
-        to="/signup"
-        className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline"
-      >
-        Sign Up
-      </Link>
+      <p>
+        You don't have account ?
+        <Link
+          to="/signup"
+          className="ml-2 font-medium text-blue-600 dark:text-blue-500 underline"
+        >
+          Sign Up
+        </Link>
+      </p>
     </div>
   );
 }
