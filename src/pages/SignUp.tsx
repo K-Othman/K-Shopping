@@ -11,7 +11,6 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [name, setName] = useState("");
   const [value, setValue] = useState<string>("");
 
   const { createUser } = UserAuth();
@@ -27,31 +26,20 @@ function SignUp() {
     }
   };
 
-  // const signUp = (e: any) => {
-  //   e.preventDefault();
-  //   signInWithPopup(auth, provider).then((data) => {
-  //     if (data.user.email) {
-  //       setValue(data.user.email);
-  //       localStorage.setItem("email", data.user.email);
-  //     }
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   setValue(localStorage.getItem("email"));
-  // }, []);
-
   return (
-    <div className="absolute top-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] ">
+    <div className="h-[100vh]  ">
       {/* {value ? (
         <CartItems />
       ) : (
         <button onClick={signUp}>Sign With Google</button>
       )} */}
       {
-        <form onSubmit={signUp}>
-          <h1>Create Account</h1>
-          <p>
+        <form
+          onSubmit={signUp}
+          className="w-[500px] mx-auto bg-[#EEE] mt-10 rounded-lg p-10"
+        >
+          <h1 className=" mb-6 text-lg text-center">Create Account</h1>
+          {/* <p>
             Already have an account?{" "}
             <Link
               className="underline font-medium text-blue-600 dark:text-blue-500"
@@ -59,32 +47,33 @@ function SignUp() {
             >
               Sign in{" "}
             </Link>{" "}
-          </p>
-          <div>
+          </p> */}
+          <div className="flex flex-col">
+            <label className="mb-2"> Email</label>
             <input
-              type="name"
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
+              className="p-3 rounded-lg mb-4"
               type="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div>
+          <div className="flex flex-col">
+            <label className="mb-2"> Password </label>
             <input
+              className="p-3 rounded-lg mb-4"
               type="password"
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit">Sign Up</button>
+          <button
+            className="bg-[#4284F3] text-white w-[100%] py-2 rounded-lg"
+            type="submit"
+          >
+            Sign Up
+          </button>
         </form>
       }
     </div>
