@@ -19,15 +19,17 @@ const Product = () => {
     }
   }, [product, productId, loading]);
 
-  if (loading) return <>Loading...</>;
+  if (loading) {
+    return (
+      <span className="loader  absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] "></span>
+    );
+  }
 
   if (!product) return <>Sorry, no products found.</>;
 
   return (
     <section className="p-5 flex justify-between items-centr container mx-auto pt-16 h-[calc(100vh-65px)]">
-      <div className="bg-white    ">
-        {" "}
-        {/* max-h-[500px] */}
+      <div className="bg-white">
         <img
           className=" pr-4 max-h-[100%]"
           src={product.image}
