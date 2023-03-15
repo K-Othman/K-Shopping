@@ -4,11 +4,13 @@ import {
   ProductsContext,
   Product as IProduct,
 } from "../context/ProductsContext";
+import { CartContext } from "../context/ShoppingCartContext";
 
 const Product = () => {
   const { products, loading } = useContext(ProductsContext);
   const { productId } = useParams();
   const [product, setProduct] = useState<IProduct | undefined>();
+  const { addProductToCart } = useContext(CartContext);
 
   useEffect(() => {
     if (productId && products) {
@@ -50,7 +52,15 @@ const Product = () => {
           {" "}
           {product.rating.count < 10 ? "Low Stock" : null}{" "}
         </p>
-        <p className="text-[#757F85] ">£{product.price} </p>
+        <p className="text-[#757F85] ">Price £{product.price} </p>
+        <div>
+          <button
+            className="border mt-5 w-[50%] rounded-lg py-2 bg-[#1A6CDD] text-white "
+            onClick={() => addProductToCart(product.id)}
+          >
+            + Add To Cart
+          </button>
+        </div>
       </div>
     </section>
   );
