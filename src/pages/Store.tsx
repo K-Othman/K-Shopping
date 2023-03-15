@@ -40,8 +40,11 @@ function Store() {
       >
         {filteredProducts.map((product) => {
           return (
-            <div className="border bg-white p-1" key={product.id}>
-              <Link to={`/products/${product.id}`} className=" ">
+            <div
+              className="border bg-white p-1 flex flex-col justify-between "
+              key={product.id}
+            >
+              <Link to={`/products/${product.id}`}>
                 <img
                   className="h-[200px] m-auto "
                   src={product.image}

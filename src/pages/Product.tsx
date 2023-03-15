@@ -40,7 +40,6 @@ const Product = () => {
       </div>
       <div className="bg-white w-2/3  px-5 py-4 ">
         {" "}
-        {/* h-[500px] */}
         <h2 className="font-bold text-xl mb-3 ">{product.title}</h2>
         <p className="text-[#757F85] text-xl pb-3  "> {product.category} </p>
         <p className="text-[#757F85] leading-6 pb-3 ">
