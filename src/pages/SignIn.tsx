@@ -5,18 +5,20 @@ import {
   // getAuth,
   signOut,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { auth } from "../firebase";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { ProductsContext } from "../context/ProductsContext";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { googleSignIn, user, logOut } = UserAuth();
   const navigate = useNavigate();
+  const { loading } = useContext(ProductsContext);
 
   const handleGoogleSignIn = async () => {
     try {
@@ -41,14 +43,15 @@ function SignIn() {
         console.log(err);
       });
   };
+  if (loading) {
+    return (
+      <span className="loader  absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] "></span>
+    );
+  }
 
   return (
     <div className="h-[100vh]">
       <div>
-        {/* <button type="button" onClick={signInWithGoogle}>
-          Sign in with Google
-        </button> */}
-        {/* <p className="">OR sign in with your email</p> */}
         <form
           onSubmit={signIn}
           className="w-[500px] mx-auto bg-[#EEE] mt-10 rounded-lg p-10"
