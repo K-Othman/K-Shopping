@@ -38,6 +38,7 @@ export const ShoppingCartProvider: FC<Props> = ({ children }) => {
       cartItems.reduce((quantity, item) => quantity + item.quantity, 0)
     );
   }, [cartItems]);
+  console.log(cartQuantity);
 
   const addProductToCart = (productId: number) => {
     const existingItem = cartItems.find((item) => item.id === productId);
