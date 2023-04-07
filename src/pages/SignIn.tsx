@@ -45,7 +45,7 @@ function SignIn() {
   };
   if (loading) {
     return (
-      <span className="loader  absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] "></span>
+      <span className="loader absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]"></span>
     );
   }
 
@@ -56,9 +56,9 @@ function SignIn() {
           onSubmit={signIn}
           className="w-[500px] mx-auto bg-[#EEE] mt-10 rounded-lg p-10"
         >
-          <h1 className=" mb-6 text-lg text-center">Sign In With</h1>
+          <h1 className="mb-6 text-lg text-center">Sign In With</h1>
           <GoogleButton
-            className="mb-6  mx-auto"
+            className="mb-6 mx-auto"
             onClick={handleGoogleSignIn}
           />
           <div className="flex flex-col">
