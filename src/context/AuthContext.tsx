@@ -12,7 +12,7 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  signInWithRedirect,
+  // signInWithRedirect,
   User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -23,9 +23,6 @@ import { auth } from "../firebase";
 type Props = {
   children: ReactNode;
 };
-// type IUser = {
-//   displayName: string | null;
-// };
 
 interface IAuth {
   googleSignIn: () => void;
@@ -42,7 +39,6 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
-    // signInWithRedirect(auth, provider);
   };
 
   const createUser = (email: string, password: string) => {

@@ -45,7 +45,7 @@ function SignIn() {
   };
   if (loading) {
     return (
-      <span className="loader  absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] "></span>
+      <span className="loader absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] "></span>
     );
   }
 
