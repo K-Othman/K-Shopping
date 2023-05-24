@@ -10,7 +10,7 @@ function Home() {
       {/* <div className="relative">
         <div>
           <img
-            className="w-[100%] "
+            className="w-[100%] object-fill"
             style={{ height: "calc(100vh - 64px)" }}
             src={landingImg}
             alt="home"
@@ -22,17 +22,29 @@ function Home() {
             NEW STYLES ADDED
           </p>
         </div>
-        <div className="z-20 text-white absolute bottom-16 flex gap-14 left-[50%] translate-x-[-50%] ">
-          <Link className="hover:text-[#EEE]" to={`/store/men's clothing`}>
-            SHOP MES'S
+        <div className="z-20 text-[#EEE] absolute bottom-16 flex md:gap-14 left-[50%] translate-x-[-50%] md:flex-row flex-col text-center gap-1 ">
+          <Link
+            className="hover:text-white hover:translate-y-[-20%] transition"
+            to={`/store/men's clothing`}
+          >
+            SHOP MEN'S
           </Link>
-          <Link className="hover:text-[#EEE]" to={`/store/women's clothing`}>
+          <Link
+            className="hover:text-white hover:translate-y-[-20%] transition"
+            to={`/store/women's clothing`}
+          >
             SHOP WOMEN'S
           </Link>
-          <Link className="hover:text-[#EEE]" to={"/store/electronics"}>
+          <Link
+            className="hover:text-white hover:translate-y-[-20%] transition"
+            to={"/store/electronics"}
+          >
             SHOP ELECTRONICS
           </Link>
-          <Link className="hover:text-[#EEE]" to={"/store/jewelery"}>
+          <Link
+            className="hover:text-white hover:translate-y-[-20%] transition"
+            to={"/store/jewelery"}
+          >
             SHOP JEWELLERY
           </Link>
         </div>
