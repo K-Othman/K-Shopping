@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import landingImg from "../images/landing.jpg";
+import Landing from "../components/Landing";
 
 function Home() {
   return (
     <section>
-      <div className="relative">
+      <Landing />
+      {/* <div className="relative">
         <div>
           <img
             className="w-[100%] object-fill"
@@ -46,7 +48,7 @@ function Home() {
             SHOP JEWELLERY
           </Link>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
