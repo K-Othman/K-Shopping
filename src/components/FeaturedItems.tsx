@@ -50,13 +50,10 @@ const FeaturedItems = () => {
 
   return (
     <article className="container mx-auto py-16">
-      <div className="relative">
-        <span className="absolute bottom-7 w-7 h-1 bg-[#2463EB]"></span>
-        <h2 className="font-bold">Featured Items</h2>
+      <div className="relative mb-5">
+        <span className="absolute bottom-7 w-9 h-1 bg-[#2463EB]"></span>
+        <h2 className="font-bold text-xl">Featured Items</h2>
       </div>
-      {/* <Carousel showDots={true} responsive={responsive} className="mt-5">
-        {featuredProductItems}
-      </Carousel> */}
       <Carousel showDots={true} responsive={responsive} className="pb-10">
         {featuredProductItems}
       </Carousel>
