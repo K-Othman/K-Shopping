@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import Store from "./pages/Store";
 import Checkout from "./pages/Checkout";
 import Protected from "./components/Protected";
+import Footer from "./components/Footer";
 // import {firebaseConfig} from "./firebase"
 // import { initializeApp } from "firebase/app";
 
@@ -37,6 +38,7 @@ function App() {
             }
           />
         </Routes>
+        <Footer />
       </main>
     </>
   );
