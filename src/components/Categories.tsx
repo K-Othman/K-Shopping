@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { Categories as ICategories } from "../context/ProductsContext";
 
@@ -7,23 +7,74 @@ interface IProps {
 }
 
 const Categories: FC<IProps> = ({ categories }) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
-    <div className="flex justify-center flex-wrap pt-4 ">
-      {categories.map((category: string, index: number) => (
-        <Link
-          key={index}
-          to={`/store/${category}`}
-          className="border m-4  bg-[#1B6BDD] text-white rounded p-3 "
+    <div className="relative">
+      <div className="flex justify-center flex-wrap pt-4 md:hidden">
+        <button
+          className={`border bg-[#1B6BDD] text-white rounded p-3 px-9 transition-all ${
+            isDropdownOpen ? "bg-[#2463EB]" : ""
+          }`}
+          onClick={handleDropdownToggle}
         >
-          {category}
-        </Link>
-      ))}
-      <Link
-        className="border m-4  bg-[#1B6BDD] text-white rounded p-3 px-9 "
-        to={"/store"}
+          Categories
+        </button>
+      </div>
+
+      <div
+        className={`${
+          isDropdownOpen ? "block" : "hidden"
+        } absolute w-1/3 left-[45%] translate-x-[-50%] top-15 mt-2 bg-white rounded-md shadow-lg z-10 text-start md:hidden transition-all`}
       >
-        All
-      </Link>
+        <button
+          className="absolute right-2 top-3 hover:bg-gray-200 px-2"
+          onClick={handleDropdownToggle}
+        >
+          x
+        </button>
+        <div className="py-2">
+          {categories.map((category: string, index: number) => (
+            <Link
+              key={index}
+              to={`/store/${category}`}
+              className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200"
+              onClick={handleDropdownToggle}
+            >
+              {category.toLocaleUpperCase()}
+            </Link>
+          ))}
+          <Link
+            to="/store"
+            className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200"
+            onClick={handleDropdownToggle}
+          >
+            ALL
+          </Link>
+        </div>
+      </div>
+
+      <div className="hidden md:flex justify-center flex-wrap pt-4">
+        {categories.map((category: string, index: number) => (
+          <Link
+            key={index}
+            to={`/store/${category}`}
+            className="border m-4 bg-[#1B6BDD] text-white rounded p-3"
+          >
+            {category}
+          </Link>
+        ))}
+        <Link
+          to="/store"
+          className="border m-4 bg-[#1B6BDD] text-white rounded p-3 px-9"
+        >
+          All
+        </Link>
+      </div>
     </div>
   );
 };

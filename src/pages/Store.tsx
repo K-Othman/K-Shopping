@@ -28,7 +28,7 @@ function Store() {
     );
   }
   return (
-    <section>
+    <section className="mb-10">
       <Categories categories={categories} />
       <div
         className="container mx-auto pt-10 "
