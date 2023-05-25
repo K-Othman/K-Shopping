@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
+import { RxDotFilled } from "react-icons/rx";
 
 export default function Landing() {
   const slides = [
@@ -30,6 +31,9 @@ export default function Landing() {
       setCurrentIndex(currentIndex + 1);
     }
   };
+  const goToSlide = (slideIndex: number) => {
+    setCurrentIndex(slideIndex);
+  };
 
   return (
     <article className="max-w-[1400px] h-[700px] w-full m-auto py-16 px-4 relative group">
@@ -42,6 +46,17 @@ export default function Landing() {
       </div>
       <div className="hidden group-hover:block absolute top-[50%] translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
         <BsChevronCompactRight onClick={nextSlide} size={30} />
+      </div>
+      <div className="flex top-4 justify-center py-2">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            onClick={() => goToSlide(index)}
+            className="text-3xl cursor-pointer"
+          >
+            <RxDotFilled />
+          </div>
+        ))}
       </div>
     </article>
   );

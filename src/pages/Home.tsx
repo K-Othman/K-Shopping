@@ -2,53 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import landingImg from "../images/landing.jpg";
 import Landing from "../components/Landing";
+import FeaturedItems from "../components/FeaturedItems";
 
 function Home() {
   return (
     <section>
       <Landing />
-      {/* <div className="relative">
-        <div>
-          <img
-            className="w-[100%] object-fill"
-            style={{ height: "calc(100vh - 64px)" }}
-            src={landingImg}
-            alt="home"
-          />
-          <span className="absolute bg-[rgb(0,0,0)] min-h-full min-w-full z-10 top-0 bg-opacity-40"></span>
-        </div>
-        <div className="absolute text-white z-10 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-80%]">
-          <p className="text-center text-4xl tracking-widest">
-            NEW STYLES ADDED
-          </p>
-        </div>
-        <div className="z-20 text-[#EEE] absolute bottom-16 flex md:gap-14 left-[50%] translate-x-[-50%] md:flex-row flex-col text-center gap-1 ">
-          <Link
-            className="hover:text-white hover:translate-y-[-20%] transition"
-            to={`/store/men's clothing`}
-          >
-            SHOP MEN'S
-          </Link>
-          <Link
-            className="hover:text-white hover:translate-y-[-20%] transition"
-            to={`/store/women's clothing`}
-          >
-            SHOP WOMEN'S
-          </Link>
-          <Link
-            className="hover:text-white hover:translate-y-[-20%] transition"
-            to={"/store/electronics"}
-          >
-            SHOP ELECTRONICS
-          </Link>
-          <Link
-            className="hover:text-white hover:translate-y-[-20%] transition"
-            to={"/store/jewelery"}
-          >
-            SHOP JEWELLERY
-          </Link>
-        </div>
-      </div> */}
+      <FeaturedItems />
     </section>
   );
 }
