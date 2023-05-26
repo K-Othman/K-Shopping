@@ -17,7 +17,7 @@ const Categories: FC<IProps> = ({ categories }) => {
     <div className="relative">
       <div className="flex justify-center flex-wrap pt-4 md:hidden">
         <button
-          className={`border bg-[#1B6BDD] text-white rounded p-3 px-9 transition-all ${
+          className={`border bg-[#1B6BDD] text-white rounded p-3 px-6  ${
             isDropdownOpen ? "bg-[#2463EB]" : ""
           }`}
           onClick={handleDropdownToggle}
@@ -28,11 +28,11 @@ const Categories: FC<IProps> = ({ categories }) => {
 
       <div
         className={`${
-          isDropdownOpen ? "block" : "hidden"
-        } absolute w-1/3 left-[45%] translate-x-[-50%] top-15 mt-2 bg-white rounded-md shadow-lg z-10 text-start md:hidden transition-all`}
+          isDropdownOpen ? "opacity-1" : "opacity-0"
+        } absolute w-1/3 left-[45%] translate-x-[-50%] top-[60px] mt-2 bg-white rounded-md shadow-lg z-10 text-start md:hidden transition duration-500`}
       >
         <button
-          className="absolute right-2 top-3 hover:bg-gray-200 px-2"
+          className="absolute right-0 top-0 hover:bg-gray-200 px-2 text-sm"
           onClick={handleDropdownToggle}
         >
           x
@@ -42,7 +42,7 @@ const Categories: FC<IProps> = ({ categories }) => {
             <Link
               key={index}
               to={`/store/${category}`}
-              className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200"
+              className="block px-4 py-2 text-xs text-gray-800 hover:bg-gray-200"
               onClick={handleDropdownToggle}
             >
               {category.toLocaleUpperCase()}
@@ -50,7 +50,7 @@ const Categories: FC<IProps> = ({ categories }) => {
           ))}
           <Link
             to="/store"
-            className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200"
+            className="block px-4 py-2 text-xs text-gray-800 hover:bg-gray-200"
             onClick={handleDropdownToggle}
           >
             ALL
