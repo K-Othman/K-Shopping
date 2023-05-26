@@ -50,7 +50,7 @@ const FeaturedItems = () => {
 
   return (
     <article className="container mx-auto py-16">
-      <div className="relative mb-5">
+      <div className="relative mb-5 ml-5">
         <span className="absolute bottom-7 w-9 h-1 bg-[#2463EB]"></span>
         <h2 className="font-bold text-xl">Featured Items</h2>
       </div>
