@@ -51,7 +51,7 @@ const Footer = () => {
       </div>
       <div className="container mx-auto mt-8">
         <p className="text-center text-sm">
-          &copy; {new Date().getFullYear()} YourStore. All rights reserved.
+          &copy; {new Date().getFullYear()} K-Shopping. All rights reserved.
         </p>
       </div>
     </footer>
