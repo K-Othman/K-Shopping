@@ -202,7 +202,7 @@ const Navbar = () => {
 
       {/* Responsive Mobile Menu */}
       {isMenuOpen && (
-        <div className="sm:hidden absolute z-20 bg-gray-800 w-full">
+        <div className="sm:hidden absolute z-20 bg-gray-800 w-full opacity-1">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {/* Home */}
             <Link
