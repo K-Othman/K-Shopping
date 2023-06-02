@@ -6,6 +6,8 @@ import {
   useMemo,
   useEffect,
 } from "react";
+import { FaStar } from "react-icons/fa";
+import { CiStar } from "react-icons/ci";
 
 export type Product = {
   id: number;
@@ -27,6 +29,7 @@ export interface IProductContext {
   products: Product[];
   categories: Categories[];
   loading: boolean;
+  renderRatingStars: (rate: number) => React.ReactNode;
 }
 
 type Props = {
@@ -62,11 +65,28 @@ export const ProductContextProivder: FC<Props> = ({ children }) => {
     getProducts();
   }, []);
 
+  const renderRatingStars = (rate: number) => {
+    const maxStars = 5;
+    const roundedRate = Math.round(rate);
+    const stars = [];
+
+    for (let i = 0; i < maxStars; i++) {
+      if (i < roundedRate) {
+        stars.push(<FaStar key={i} />);
+      } else {
+        stars.push(<CiStar key={i} />);
+      }
+    }
+
+    return stars;
+  };
+
   const ProductContextValue = useMemo(
     () => ({
       products,
       categories,
       loading,
+      renderRatingStars,
     }),
     [products, categories, loading]
   );

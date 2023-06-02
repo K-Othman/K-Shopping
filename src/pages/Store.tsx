@@ -5,7 +5,8 @@ import Categories from "../components/Categories";
 import { CartContext } from "../context/ShoppingCartContext";
 
 function Store() {
-  const { categories, products, loading } = useContext(ProductsContext);
+  const { categories, products, loading, renderRatingStars } =
+    useContext(ProductsContext);
   const { category } = useParams();
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const { addProductToCart } = useContext(CartContext);
@@ -60,14 +61,16 @@ function Store() {
                     <p className="text-red-500">
                       {product.rating.count < 10 ? "Low Stock" : null}
                     </p>
-                    <p> {product.rating.rate} </p>
+                    <div className="flex items-center pb-3">
+                      {renderRatingStars(product.rating.rate)}
+                    </div>
                   </div>
                   <p className="pt-2 text-[#757F85]"> £{product.price} </p>
                 </div>
               </Link>
               <div>
                 <button
-                  className="border w-[100%] m-auto rounded py-2 bg-[#1A6CDD] text-white "
+                  className="border w-[100%] m-auto rounded py-2 bg-main_color hover:bg-hover_color text-white"
                   onClick={() => addProductToCart(product.id)}
                 >
                   + Add To Cart
