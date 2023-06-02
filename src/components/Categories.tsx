@@ -63,14 +63,14 @@ const Categories: FC<IProps> = ({ categories }) => {
           <Link
             key={index}
             to={`/store/${category}`}
-            className="border m-4 bg-[#1B6BDD] text-white rounded p-3"
+            className="border m-4 bg-main_color hover:bg-hover_color text-white rounded p-3"
           >
             {category}
           </Link>
         ))}
         <Link
           to="/store"
-          className="border m-4 bg-[#1B6BDD] text-white rounded p-3 px-9"
+          className="border m-4 bg-main_color hover:bg-hover_color text-white rounded p-3 px-9"
         >
           All
         </Link>
