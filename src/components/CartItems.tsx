@@ -13,72 +13,79 @@ function CartItems() {
   } = useContext(CartContext);
   const { products } = useContext(ProductsContext);
 
+  const total = cartItems.reduce((total, item) => {
+    const product = products.find((p) => p.id === item.id);
+    return total + (product?.price || 0) * item.quantity;
+  }, 0);
+
   return (
-    <div className="pt-10 container mx-auto ">
-      {cartItems.map((item) => {
-        const itemm = products.find((i) => i.id === item.id);
-        if (itemm === null) return null;
+    <div className="container mx-auto pt-10">
+      <h1 className="text-2xl font-semibold mb-6">Shopping Cart</h1>
+      {cartItems.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="md:col-span-3">
+            {cartItems.map((item) => {
+              const product = products.find((p) => p.id === item.id);
+              if (!product) return null;
 
-        return (
-          <div
-            key={item.id}
-            className="flex justify-between my-8 flex-col md:flex-row "
-          >
-            <div className="flex ">
-              <img
-                className="max-w-[100px] mr-4 "
-                src={itemm?.image}
-                alt={itemm?.description}
-              />
-
-              <div>
-                <p>{itemm?.title}</p>
-                <p>£{itemm?.price}</p>
-              </div>
-            </div>
-            <div className="flex flex-col  ">
-              <div className="flex">
-                <button
-                  className="bg-[#0C6DFD] text-white rounded  pr-4 pb-2 pl-4 "
-                  onClick={() => addProductToCart(item.id)}
+              return (
+                <div
+                  key={item.id}
+                  className="flex flex-col md:flex-row items-center py-4 border-b border-gray-200"
                 >
-                  +
-                </button>
-                <div className="py-1  px-4 mx-2 bg-white rounded ">
-                  {item.quantity}
+                  <img
+                    className="w-24 h-24 mb-4 md:mr-4 object-cover"
+                    src={product.image}
+                    alt={product.title}
+                  />
+                  <div className="flex-grow">
+                    <p className="text-lg font-semibold">{product.title}</p>
+                    <p className="text-gray-500">£{product.price}</p>
+                  </div>
+                  <div className="flex items-center mt-4 md:mt-0">
+                    <button
+                      className="bg-main_color hover:bg-hover_color text-white rounded-full py-1 px-3"
+                      onClick={() => addProductToCart(item.id)}
+                    >
+                      +
+                    </button>
+                    <div className="px-4 mx-2 bg-gray-100 rounded">
+                      {item.quantity}
+                    </div>
+                    <button
+                      className="bg-main_color hover:bg-hover_color text-white rounded-full py-1 px-3"
+                      onClick={() => decreaseProductFromCart(item.id)}
+                    >
+                      -
+                    </button>
+                    <RiDeleteBinLine
+                      onClick={() => deleteFromCart(item.id)}
+                      className="text-gray-500 hover:text-red-500 cursor-pointer ml-4"
+                      size={20}
+                    />
+                  </div>
                 </div>
-
-                <button
-                  className="bg-[#0C6DFD] text-white rounded  pr-4 pb-4 pl-4 "
-                  onClick={() => decreaseProductFromCart(item.id)}
-                >
-                  _
-                </button>
-              </div>
-              <RiDeleteBinLine
-                onClick={() => deleteFromCart(item.id)}
-                className="rounded mx-auto hover:text-red-500 hover:cursor-pointer"
-              />
-              {/* <button
-                className="bg-[#BB2D3B] text-white rounded mx-auto mt-2 text-sm py-[2px] px-1 "
-                onClick={() => deleteFromCart(item.id)}
-              ></button> */}
-            </div>
+              );
+            })}
           </div>
-        );
-      })}
-      <div className="flex justify-end text-[#757F85] ">
-        Total: £
-        {cartItems
-          .reduce((total, i) => {
-            const item = products.find((product) => product.id === i.id);
-            return total + (item?.price || 0) * i.quantity;
-          }, 0)
-          .toFixed(2)}
-      </div>
-      <Link className="bg-[#0C6DFD] text-white" to={"/checkout"}>
-        Proceed to Checkout
-      </Link>
+          <div className="md:col-span-1">
+            <div className="bg-gray-100 rounded-lg p-6 mb-6">
+              <p className="text-lg font-semibold text-gray-700 mb-4">Total</p>
+              <p className="text-2xl font-bold text-main_color">
+                £{total.toFixed(2)}
+              </p>
+            </div>
+            <Link
+              to="/checkout"
+              className="block bg-main_color hover:bg-hover_color text-white font-semibold py-2 px-4 rounded"
+            >
+              Proceed to Checkout
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <p>Your shopping cart is empty.</p>
+      )}
     </div>
   );
 }
