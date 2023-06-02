@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProductsContext } from "../context/ProductsContext";
 import { CartContext } from "../context/ShoppingCartContext";
 import { RiDeleteBinLine } from "react-icons/Ri";
+import { ProductsContext } from "../context/ProductsContext";
 
 function CartItems() {
   const {
@@ -55,7 +55,10 @@ function CartItems() {
                   _
                 </button>
               </div>
-              <RiDeleteBinLine className="rounded mx-auto hover:text-red-500 hover:cursor-pointer" />
+              <RiDeleteBinLine
+                onClick={() => deleteFromCart(item.id)}
+                className="rounded mx-auto hover:text-red-500 hover:cursor-pointer"
+              />
               {/* <button
                 className="bg-[#BB2D3B] text-white rounded mx-auto mt-2 text-sm py-[2px] px-1 "
                 onClick={() => deleteFromCart(item.id)}
