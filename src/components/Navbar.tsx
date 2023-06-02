@@ -75,7 +75,7 @@ const Navbar = () => {
               {/* Shopping Cart */}
               <Link to="/carts" className="relative">
                 <svg
-                  className="h-6 w-6 fill-current text-gray-300 hover:bg-gray-700"
+                  className="h-6 w-6 fill-current text-gray-300 hover:bg-gray-700 rounded-md"
                   viewBox="0 0 24 24"
                 >
                   <path d="M19 7H5.929L5.07 4H2v2h2.929l2.768 10.703c.259 1.025 1.204 1.797 2.337 1.797H16v-2H10.24l-.53-2H18V7zm0 2v7H8.768l-.762-3H18V9h-3z" />
