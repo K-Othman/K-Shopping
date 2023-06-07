@@ -130,8 +130,8 @@ const Navbar = () => {
       </div>
 
       {/* Responsive Mobile Menu */}
-      {isMenuOpen && (
-        <div className="sm:hidden absolute z-20 bg-gray-800 w-full opacity-1">
+      {isMenuOpen ? (
+        <div className="sm:hidden opacity-1 absolute z-20 bg-gray-800 w-full opacity-1 transition duration-300">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {/* Home */}
             <Link
@@ -158,7 +158,7 @@ const Navbar = () => {
             </Link>
 
             {/* Login */}
-            <div className="text-gray-300 hover:bg-gray-700 ">
+            <div className="text-gray-300 hover:bg-gray-700 px-3 py-2">
               {user?.displayName || user?.email ? (
                 <div className="">
                   <p>
@@ -176,27 +176,11 @@ const Navbar = () => {
                 </Link>
               )}
             </div>
-            {/* Shopping Cart */}
-            {/* <Link
-              to="/carts"
-              className="relative text-gray-300 hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium"
-            >
-              <svg
-                className="h-6 w-6 fill-current text-gray-300 hover:bg-gray-700"
-                viewBox="0 0 24 24"
-              >
-                <path d="M19 7H5.929L5.07 4H2v2h2.929l2.768 10.703c.259 1.025 1.204 1.797 2.337 1.797H16v-2H10.24l-.53-2H18V7zm0 2v7H8.768l-.762-3H18V9h-3z" />
-              </svg>
-
-              {cartQuantity > 0 && (
-                <div className="absolute top-[-10px] right-[-10px] text-gray-300 hover:bg-gray-700 w-5 h-5 rounded-full flex justify-center items-center  text-xs">
-                  {cartQuantity}
-                </div>
-              )}
-            </Link> */}
           </div>
           {/* Shopping Cart */}
         </div>
+      ) : (
+        <div className="opacity-0"></div>
       )}
     </nav>
   );
