@@ -6,12 +6,20 @@ import { GiHamburgerMenu } from "react-icons/Gi";
 
 const Navbar = () => {
   const { cartQuantity, cartItems } = useContext(CartContext);
-  const { user } = UserAuth();
+  const { user, logOut } = UserAuth();
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -54,14 +62,22 @@ const Navbar = () => {
 
               {/* Login */}
 
-              <div className="text-gray-300 hover:bg-gray-700">
+              <div className="text-gray-300">
                 {user?.displayName || user?.email ? (
-                  <div className="">
+                  <div className="flex text-sm gap-1">
                     <p>
                       {user.displayName
                         ? ` Hi, ${user.displayName.split(" ")[0]} `
                         : ""}{" "}
                     </p>
+                    <span>|</span>
+                    <button
+                      className="
+                       font-semibold hover:bg-gray-700"
+                      onClick={handleSignOut}
+                    >
+                      Sign Out
+                    </button>
                   </div>
                 ) : (
                   <Link
@@ -166,6 +182,14 @@ const Navbar = () => {
                       ? ` Hi, ${user.displayName.split(" ")[0]} `
                       : ""}{" "}
                   </p>
+
+                  <button
+                    className="
+                        hover:bg-gray-700 py-2"
+                    onClick={handleSignOut}
+                  >
+                    Sign Out
+                  </button>
                 </div>
               ) : (
                 <Link

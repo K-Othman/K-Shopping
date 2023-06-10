@@ -1,38 +1,3 @@
-// import { useState } from "react";
-// import { UserAuth } from "../context/AuthContext";
-
-// function Checkout() {
-//   const { user, logOut } = UserAuth();
-//   const handleSignOut = async () => {
-//     try {
-//       await logOut();
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-
-//   return (
-//     <>
-//       <div>
-//         <p> Checkout</p>
-
-//         {user?.displayName
-//           ? `Welcome ${user?.displayName} Your are about to checkout`
-//           : `Hi, You are about to checkout `}
-//       </div>
-//       <p>Or</p>
-//       <button
-//         className="text-sm font-medium text-blue-600 dark:text-blue-500 hover:underline"
-//         onClick={handleSignOut}
-//       >
-//         Logout
-//       </button>
-//     </>
-//   );
-// }
-
-// export default Checkout;
-
 import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/ShoppingCartContext";
@@ -49,14 +14,8 @@ interface FormData {
 
 function Checkout() {
   const { cartItems } = useContext(CartContext);
-  const { user, logOut } = UserAuth();
-  const handleSignOut = async () => {
-    try {
-      await logOut();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { user } = UserAuth();
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -213,14 +172,6 @@ function Checkout() {
       ) : (
         <p>Your shopping cart is empty.</p>
       )}
-      <div className="flex justify-end mt-6">
-        <button
-          className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
-          onClick={handleSignOut}
-        >
-          Sign Out
-        </button>
-      </div>
     </div>
   );
 }
