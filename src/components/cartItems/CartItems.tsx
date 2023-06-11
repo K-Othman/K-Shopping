@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/ShoppingCartContext";
-import { RiDeleteBinLine } from "react-icons/Ri";
+import { RiDeleteBinLine } from "react-icons/ri";
 import { ProductsContext } from "../../context/productsContext";
 
 function CartItems() {
