@@ -1,18 +1,12 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { MouseEvent, useContext, useEffect, useState } from "react";
-import { auth, provider } from "../firebase";
-import { signInWithPopup } from "firebase/auth";
-import CartItems from "../components/CartItems";
-import { Link } from "react-router-dom";
-import SignIn from "./SignIn";
-import { UserAuth } from "../context/AuthContext";
-import { ProductsContext } from "../context/ProductsContext";
+import { useContext, useEffect, useState } from "react";
+
+import { UserAuth } from "../../context/AuthContext";
+import { ProductsContext } from "../../context/productsContext";
 
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [value, setValue] = useState<string>("");
   const { loading } = useContext(ProductsContext);
 
   const { createUser } = UserAuth();

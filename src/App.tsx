@@ -1,16 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-import CartItems from "./components/CartItems";
-import Navbar from "./components/Navbar";
-
-import Home from "./pages/Home";
-import SignIn from "./pages/SignIn";
-import Product from "./pages/Product";
-import SignUp from "./pages/SignUp";
-import Store from "./pages/Store";
-import Checkout from "./pages/Checkout";
-import Protected from "./components/Protected";
-import Footer from "./components/Footer";
-import ContactUs from "./pages/ContactUs";
+import CartItems from "./components/cartItems/CartItems";
+import Navbar from "./components/navbar/Navbar";
+import Home from "./pages/home/Home";
+import SignIn from "./pages/signIn/SignIn";
+import Product from "./pages/product/Product";
+import SignUp from "./pages/signUp/SignUp";
+import Store from "./pages/store/Store";
+import Checkout from "./pages/checkout/Checkout";
+import Protected from "./components/protected/Protected";
+import Footer from "./components/footer/Footer";
+import ContactUs from "./pages/contactUs/ContactUs";
 
 function App() {
   return (

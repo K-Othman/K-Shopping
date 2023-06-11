@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import { Categories as ICategories } from "../context/ProductsContext";
+import { Categories as ICategories } from "../../context/productsContext";
 
 interface IProps {
   categories: ICategories[];
@@ -17,8 +17,8 @@ const Categories: FC<IProps> = ({ categories }) => {
     <div className="relative">
       <div className="flex justify-center flex-wrap pt-4 md:hidden">
         <button
-          className={`border bg-[#1B6BDD] text-white rounded p-3 px-6  ${
-            isDropdownOpen ? "bg-[#2463EB]" : ""
+          className={`border bg-main_color hover:bg-hover_color text-white rounded p-3 px-6  ${
+            isDropdownOpen ? "bg-main_color hover:bg-hover_color" : ""
           }`}
           onClick={handleDropdownToggle}
         >
