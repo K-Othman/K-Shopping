@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/ShoppingCartContext";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { MdOutlineDeleteOutline } from "react-icons/md";
 import { ProductsContext } from "../../context/productsContext";
 
 function CartItems() {
@@ -58,7 +58,7 @@ function CartItems() {
                     >
                       -
                     </button>
-                    <RiDeleteBinLine
+                    <MdOutlineDeleteOutline
                       onClick={() => deleteFromCart(item.id)}
                       className="text-gray-500 hover:text-red-500 cursor-pointer ml-4"
                       size={20}
