@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import {
   ProductsContext,
   Product as IProduct,
-} from "../context/ProductsContext";
-import { CartContext } from "../context/ShoppingCartContext";
+} from "../../context/productsContext";
+import { CartContext } from "../../context/ShoppingCartContext";
 
 const Product = () => {
   const { products, loading, renderRatingStars } = useContext(ProductsContext);

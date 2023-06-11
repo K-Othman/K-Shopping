@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductsContext } from "../context/ProductsContext";
+import { ProductsContext } from "../../context/productsContext";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 

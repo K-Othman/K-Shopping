@@ -12,7 +12,6 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
-  // signInWithRedirect,
   User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -53,7 +52,6 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("USER", currentUser);
     });
     return () => {
       unsubscribe();

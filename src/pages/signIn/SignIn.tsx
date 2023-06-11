@@ -1,17 +1,11 @@
-import {
-  signInWithEmailAndPassword,
-  // GoogleAuthProvider,
-  // signInWithPopup,
-  // getAuth,
-  signOut,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import GoogleButton from "react-google-button";
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { ProductsContext } from "../context/ProductsContext";
+import { ProductsContext } from "../../context/productsContext";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -43,7 +37,7 @@ function SignIn() {
         console.log(err);
       });
   };
-  
+
   return (
     <div className="h-[100vh]">
       <div>
@@ -52,10 +46,7 @@ function SignIn() {
           className="w-[500px] mx-auto bg-[#EEE] mt-10 rounded-lg p-10"
         >
           <h1 className="mb-6 text-lg text-center">Sign In With</h1>
-          <GoogleButton
-            className="mb-6 mx-auto"
-            onClick={handleGoogleSignIn}
-          />
+          <GoogleButton className="mb-6 mx-auto" onClick={handleGoogleSignIn} />
           <div className="flex flex-col">
             <label className="mb-2"> Email</label>
             <input
@@ -93,14 +84,9 @@ function SignIn() {
             </Link>
           </p>
         </form>
-
-        {/* <button type="button" onClick={logOut}>
-          Sign out
-        </button> */}
       </div>
     </div>
   );
 }
 
 export default SignIn;
-// w-[500px] mx-auto bg-[#EEE] my-auto rounded-lg p-10

@@ -40,7 +40,7 @@ export const ProductsContext = createContext<IProductContext>(
   {} as IProductContext
 );
 
-export const ProductContextProivder: FC<Props> = ({ children }) => {
+export const ProductContextProvider: FC<Props> = ({ children }) => {
   const baseUrl = "https://fakestoreapi.com";
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
