@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { CartContext } from "../context/ShoppingCartContext";
-import { GiHamburgerMenu } from "react-icons/Gi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
   const { cartQuantity, cartItems } = useContext(CartContext);
