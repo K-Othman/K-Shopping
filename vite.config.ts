@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "^/api": {
-        target: "http://localhost:3000", // Replace with your server URL
+        target: "https://k-shopping.vercel.app/", // Replace with your server URL
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
