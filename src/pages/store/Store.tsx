@@ -25,7 +25,7 @@ function Store() {
 
   if (loading) {
     return (
-      <span className="loader  absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] "></span>
+      <span className="loader absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]"></span>
     );
   }
 
@@ -33,7 +33,7 @@ function Store() {
     <section className="mb-10">
       <Categories categories={categories} />
       <div
-        className="container mx-auto pt-10 "
+        className="container mx-auto pt-10"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(250px , 1fr))",
@@ -44,7 +44,7 @@ function Store() {
           filteredProducts.map((product) => {
             return (
               <div
-                className="border bg-white p-1 flex flex-col justify-between "
+                className="border bg-white p-1 flex flex-col justify-between"
                 key={product.id}
               >
                 <Link to={`/products/${product.id}`}>
