@@ -39,11 +39,11 @@ function SignIn() {
   };
 
   return (
-    <div className="h-[100vh]">
+    <div className="h-[100vh] container mx-auto">
       <div>
         <form
           onSubmit={signIn}
-          className="w-[500px] mx-auto bg-[#EEE] mt-10 rounded-lg p-10"
+          className="max-w-[500px] mx-auto bg-[#EEE] mt-10 rounded-lg p-10"
         >
           <h1 className="mb-6 text-lg text-center">Sign In With</h1>
           <GoogleButton className="mb-6 mx-auto" onClick={handleGoogleSignIn} />
