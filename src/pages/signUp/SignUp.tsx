@@ -32,7 +32,7 @@ function SignUp() {
       {
         <form
           onSubmit={signUp}
-          className="w-[500px] mx-auto bg-[#EEE] mt-10 rounded-lg p-10"
+          className="max-w-[500px] mx-auto bg-[#EEE] mt-10 rounded-lg p-10"
         >
           <h1 className=" mb-6 text-lg text-center">Create Account</h1>
           <div className="flex flex-col">

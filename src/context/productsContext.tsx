@@ -51,12 +51,41 @@ export const ProductContextProvider: FC<Props> = ({ children }) => {
     "women's clothing",
   ]);
 
+  // function getProducts() {
+  //   setLoading(true);
+  //   fetch(`${baseUrl}/products`, {
+  //     mode: "no-cors",
+  //     method: "get",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setProducts(data);
+  //       setLoading(false);
+  //     });
+  // }
   function getProducts() {
     setLoading(true);
-    fetch(`${baseUrl}/products`)
-      .then((res) => res.json())
+    fetch(`${baseUrl}/products`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not OK");
+        }
+        return res.json();
+      })
       .then((data) => {
         setProducts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
         setLoading(false);
       });
   }
